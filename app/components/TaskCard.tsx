@@ -1,25 +1,24 @@
-import React, { useState } from "react";
-import {
-  StyleSheet,
-  View,
-  Text,
-  TouchableOpacity,
-  ScrollView,
-  Alert,
-  FlatList,
-  ListRenderItemInfo,
-  Task,
-  TextInput,
-} from "react-native";
+import { api } from "@/convex/_generated/api";
+import { Id } from "@/convex/_generated/dataModel";
+import UseTheme, { ColorScheme } from "@/hooks/useTheme";
 import { Ionicons } from "@expo/vector-icons";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Feather from "@expo/vector-icons/Feather";
-import UseTheme, { ColorScheme } from "@/hooks/useTheme";
-import { LinearGradient } from "expo-linear-gradient";
-import { Tasks } from "../types/Tasks";
 import { useMutation } from "convex/react";
-import { api } from "@/convex/_generated/api";
-import { Id } from "@/convex/_generated/dataModel";
+import { LinearGradient } from "expo-linear-gradient";
+import React, { useState } from "react";
+import {
+  Alert,
+  FlatList,
+  ListRenderItemInfo,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { Tasks } from "../types/Tasks";
 const TaskCard = ({ tasks, setTasks }: any) => {
   const { colors } = UseTheme();
   const styles = createTaskCardStyles(colors);
@@ -330,12 +329,12 @@ const TaskCard = ({ tasks, setTasks }: any) => {
           >
             <Text
               style={{
-                color: colors.text,
-                fontSize: 20,
+                color: colors.textMuted,
+                fontSize: 40,
                 alignSelf: "center",
               }}
             >
-              🎉 Yay youve finished all your tasks!🎉
+              No todos yet!
             </Text>
           </View>
         )}

@@ -11,7 +11,7 @@ const Preferences = () => {
       <View
         style={{
           width: "95%" as any,
-          borderColor: colors.surface,
+          borderColor: colors.border,
           borderWidth: 1,
           marginHorizontal: "auto",
           borderRadius: 10,
@@ -38,7 +38,7 @@ const Preferences = () => {
               colors={colors.gradients.primary}
               style={{ borderRadius: 5, padding: 10, marginRight: 15 }}
             >
-              <Ionicons name="moon" size={18} color="white" />
+              <Ionicons name="moon" size={15} color="white" />
             </LinearGradient>
             <Text style={styles.switchesText}>Dark Mode</Text>
           </View>
@@ -47,7 +47,7 @@ const Preferences = () => {
             onValueChange={toggleDarkMode}
             thumbColor={"white"}
             trackColor={{ false: colors.border, true: colors.primary }}
-            // style={{ transform: [{ scaleX: 2 }, { scaleY: 2 }] }}
+            style={styles.switchesSize}
           />
         </View>
       </View>
@@ -59,16 +59,16 @@ const Preferences = () => {
               colors={colors.gradients.warning}
               style={{ borderRadius: 5, padding: 10, marginRight: 15 }}
             >
-              <FontAwesome name="bell" size={18} color="white" />
+              <FontAwesome name="bell" size={15} color="white" />
             </LinearGradient>
             <Text style={styles.switchesText}>Notifications</Text>
           </View>
           <Switch
-            value={isDarkMode}
-            onValueChange={toggleDarkMode}
+            // value={}
+            // onValueChange={}
             thumbColor={"white"}
             trackColor={{ false: colors.border, true: colors.warning }}
-            // style={{ transform: [{ scaleX: 2 }, { scaleY: 2 }] }}
+            style={styles.switchesSize}
           />
         </View>
       </View>
@@ -81,19 +81,23 @@ const Preferences = () => {
               colors={colors.gradients.success}
               style={{ borderRadius: 5, padding: 10, marginRight: 15 }}
             >
-              <AntDesign name="sync" size={18} color="white" />
+              <AntDesign name="sync" size={15} color="white" />
             </LinearGradient>
             <Text style={styles.switchesText}>Auto Sync</Text>
           </View>
           <Switch
-            value={isDarkMode}
-            onValueChange={toggleDarkMode}
+            // value={}
+            // onValueChange={}
             thumbColor={"white"}
             trackColor={{ false: colors.border, true: colors.success }}
-            // style={{ transform: [{ scaleX: 2 }, { scaleY: 2 }] }}
+            style={styles.switchesSize}
           />
         </View>
       </View>
+
+      {/* DANGER ZONE */}
+
+      <View></View>
     </LinearGradient>
   );
 };
@@ -101,11 +105,12 @@ const Preferences = () => {
 const createPreferencesStyles = (colors: ColorScheme) => {
   const styles = StyleSheet.create({
     container: {
-      width: "90%" as any,
+      width: "92%" as any,
       marginHorizontal: "auto" as "auto",
       borderRadius: 30,
       paddingHorizontal: 10,
       paddingVertical: 20,
+      marginBottom: 30,
     },
     primaryText: {
       fontSize: 25,
@@ -125,6 +130,9 @@ const createPreferencesStyles = (colors: ColorScheme) => {
       fontSize: 20,
       fontWeight: 600,
       color: colors.text,
+    },
+    switchesSize: {
+      transform: [{ scaleX: 1.1 }, { scaleY: 1.1 }],
     },
   });
   return styles;

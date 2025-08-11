@@ -15,7 +15,7 @@ const ProgressCard = () => {
         width: "92%",
         marginHorizontal: "auto",
         paddingVertical: 15,
-        marginBottom: 20,
+        marginBottom: 30,
       }}
     >
       <Text

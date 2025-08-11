@@ -1,5 +1,6 @@
 import UseTheme, { ColorScheme } from "@/hooks/useTheme";
 import { ScrollView, StyleSheet, View } from "react-native";
+import DangerZone from "../components/DangerZone";
 import Preferences from "../components/Preferences";
 import ProgressCard from "../components/ProgressCard";
 import SettingsHeader from "../components/SettingsHeader";
@@ -13,6 +14,7 @@ const Settings = () => {
         <SettingsHeader />
         <ProgressCard />
         <Preferences />
+        <DangerZone />
       </ScrollView>
     </View>
   );
