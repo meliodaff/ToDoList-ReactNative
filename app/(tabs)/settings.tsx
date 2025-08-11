@@ -1,25 +1,19 @@
 import UseTheme, { ColorScheme } from "@/hooks/useTheme";
-import { useState } from "react";
-import SettingsHeader from "../components/SettingsHeader";
-import {
-  StyleSheet,
-  ScrollView,
-  Text,
-  View,
-  TouchableOpacity,
-} from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
+import Preferences from "../components/Preferences";
 import ProgressCard from "../components/ProgressCard";
+import SettingsHeader from "../components/SettingsHeader";
 
 const Settings = () => {
   const { toggleDarkMode, colors } = UseTheme();
   const styles = createSettingsStyles(colors);
   return (
     <View style={{ paddingTop: 50, backgroundColor: colors.bg, flex: 1 }}>
-      <SettingsHeader />
-      <ProgressCard />
-      <TouchableOpacity onPress={toggleDarkMode}>
-        <Text style={[styles.button]}>Dark Mode</Text>
-      </TouchableOpacity>
+      <ScrollView>
+        <SettingsHeader />
+        <ProgressCard />
+        <Preferences />
+      </ScrollView>
     </View>
   );
 };

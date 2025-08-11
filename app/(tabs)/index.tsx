@@ -1,17 +1,13 @@
-import UseTheme from "@/hooks/useTheme";
-import { Link } from "expo-router";
-import { useEffect, useState } from "react";
-import { Text, View, TouchableOpacity, ScrollView, Task } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import { StyleSheet } from "react-native";
-import TaskCard from "../components/TaskCard";
-import { LinearGradient } from "expo-linear-gradient";
-import { Tasks } from "../types/Tasks";
-import Header from "../components/Header";
-import TaskInput from "../components/TaskInput";
-import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import UseTheme from "@/hooks/useTheme";
+import { useQuery } from "convex/react";
+import { LinearGradient } from "expo-linear-gradient";
+import { useEffect, useState } from "react";
+import Header from "../components/Header";
 import ProgressBar from "../components/ProgressBar";
+import TaskCard from "../components/TaskCard";
+import TaskInput from "../components/TaskInput";
+import { Tasks } from "../types/Tasks";
 export default function Index() {
   const { colors } = UseTheme();
   const listOfTasks = useQuery(api.todos.getTodos);
