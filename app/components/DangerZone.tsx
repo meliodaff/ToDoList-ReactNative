@@ -23,6 +23,9 @@ const DangerZone = () => {
           onPress: async () => {
             try {
               const response = await deleteAllTasks();
+              Alert.alert("App reset", "The app has now been reset", [
+                { style: "default", text: "Confirm" },
+              ]);
               console.log(response);
             } catch (error) {
               console.log(error);

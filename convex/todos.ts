@@ -1,9 +1,19 @@
-import { query, mutation } from "./_generated/server";
 import { v } from "convex/values";
+import { mutation, query } from "./_generated/server";
 export const getTodos = query({
   handler: async (ctx) => {
     const todos = await ctx.db.query("todos").order("asc").collect();
     return todos;
+  },
+});
+
+export const completedTodosCount = query({
+  handler: async (ctx) => {
+    const count = await ctx.db
+      .query("todos")
+      .filter((q) => q.gte(q.field("isCompleted"), true))
+      .collect();
+    return count.length;
   },
 });
 

@@ -19,6 +19,7 @@ import {
   View,
 } from "react-native";
 import { Tasks } from "../types/Tasks";
+import NoTaskYet from "./NoTaskYet";
 const TaskCard = ({ tasks, setTasks }: any) => {
   const { colors } = UseTheme();
   const styles = createTaskCardStyles(colors);
@@ -334,7 +335,8 @@ const TaskCard = ({ tasks, setTasks }: any) => {
                 alignSelf: "center",
               }}
             >
-              No todos yet!
+              {/* No todos yet! */}
+              <NoTaskYet />
             </Text>
           </View>
         )}

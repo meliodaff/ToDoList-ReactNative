@@ -1,12 +1,30 @@
+import { api } from "@/convex/_generated/api";
 import UseTheme from "@/hooks/useTheme";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Feather from "@expo/vector-icons/Feather";
+import { useQuery } from "convex/react";
 import { LinearGradient } from "expo-linear-gradient";
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useEffect, useState } from "react";
+import { Text, View } from "react-native";
 import Progress from "./Progress";
 const ProgressCard = () => {
   const { colors } = UseTheme();
+  const countTasks = useQuery(api.todos.getTodos)?.length || 0;
+  const completedTasksCount = useQuery(api.todos.completedTodosCount);
+  const getActiveTasksCount = (): number => {
+    if (!completedTasksCount) {
+      return countTasks;
+    }
+    return countTasks - completedTasksCount;
+  };
+  const [activeTasksCount, setActiveTasksCount] =
+    useState<number>(getActiveTasksCount); // dk if this will work because but i think it will work since its returning a number. (edited) it works
+  useEffect(() => {
+    console.log("Im in the use effect");
+    setActiveTasksCount(() => {
+      return getActiveTasksCount();
+    });
+  }, [countTasks, completedTasksCount]);
   return (
     <LinearGradient
       colors={colors.gradients.surface}
@@ -36,7 +54,7 @@ const ProgressCard = () => {
           iconOrigin={Feather}
           gradientIcon={colors.gradients.primary}
           iconName="list"
-          number="4"
+          number={countTasks}
           category="Total Todos"
         />
         <Progress
@@ -44,7 +62,7 @@ const ProgressCard = () => {
           iconOrigin={AntDesign}
           gradientIcon={colors.gradients.success}
           iconName="checkcircle"
-          number="2"
+          number={completedTasksCount}
           category="Completed"
         />
         <Progress
@@ -52,14 +70,12 @@ const ProgressCard = () => {
           iconOrigin={AntDesign}
           gradientIcon={colors.gradients.warning}
           iconName="clockcircle"
-          number="2"
+          number={activeTasksCount}
           category="Active"
         />
       </View>
     </LinearGradient>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default ProgressCard;
